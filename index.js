@@ -29,7 +29,7 @@ dbEventEmitter.on('new_order', (msg) => {
 });
 
 // Connect to Postgres (replace with your own connection string)
-pg.connect('postgres://postgres:password@localhost:5432/postgres', function(err, client) {
+pg.connect('postgres://ilolhcujlhedox:2be8ff85d49d5b1022b4ff7b3c55a81f8c636d9b604ca8fc3df89bafcfa652ff@ec2-54-217-206-65.eu-west-1.compute.amazonaws.com:5432/d52bf94gqsc648', function(err, client) {
   if(err) {
     console.log(err);
   }
