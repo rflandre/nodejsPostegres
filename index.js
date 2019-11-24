@@ -14,9 +14,6 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
-
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect()
@@ -29,3 +26,7 @@ express()
       res.send("Error " + err);
     }
   })
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+
+ 
