@@ -8,36 +8,31 @@ const pool = new Pool({
   connectionString: 'postgres://ilolhcujlhedox:2be8ff85d49d5b1022b4ff7b3c55a81f8c636d9b604ca8fc3df89bafcfa652ff@ec2-54-217-206-65.eu-west-1.compute.amazonaws.com:5432/d52bf94gqsc648',
   ssl: true
 });
-
 var EventEmitter = require('events');
 var util = require('util');
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .get('/db', async (req, res) => {
-    try {
-      
-      
       // Build and instantiate our custom event emitter
-function DbEventEmitter(){
-  EventEmitter.call(this);
-}
+      function DbEventEmitter(){
+        EventEmitter.call(this);
+      }
 
-util.inherits(DbEventEmitter, EventEmitter);
-var dbEventEmitter = new DbEventEmitter;
+
+      util.inherits(DbEventEmitter, EventEmitter);
+      var dbEventEmitter = new DbEventEmitter;
+      
 
 // Define the event handlers for each channel name
 dbEventEmitter.on('new_enseigne', (msg) => {
   // Custom logic for reacting to the event e.g. firing a webhook, writing a log entry etc
   console.log('New order received: ' + msg.name);
 });
-      
-      const client = await pool.connect()
 
-      console.log('after connection opened '+ client);
+
+const client = await pool.connect()
+
+console.log('after connection opened in index '+ client);
+
+
 
   // Listen for all pg_notify channel messages
   client.on('notification', function(msg) {
@@ -49,6 +44,22 @@ dbEventEmitter.on('new_enseigne', (msg) => {
 
   // Designate which channels we are listening on. Add additional channels with multiple lines.
   client.query('LISTEN new_enseigne');
+
+
+  
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .get('/db', async (req, res) => {
+    try {
+      
+      
+      
+      const client = await pool.connect()
+
+      console.log('after connection opened '+ client);
 
 
       const result = await client.query('SELECT * FROM mysalesforcerf.enseigne__c');
