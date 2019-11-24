@@ -30,14 +30,14 @@ util.inherits(DbEventEmitter, EventEmitter);
 var dbEventEmitter = new DbEventEmitter;
 
 // Define the event handlers for each channel name
-dbEventEmitter.on('new_order', (msg) => {
+dbEventEmitter.on('new_enseigne', (msg) => {
   // Custom logic for reacting to the event e.g. firing a webhook, writing a log entry etc
   console.log('New order received: ' + msg.orderId);
 });
       
-console.log('New order received: ');
       const client = await pool.connect()
 
+      console.log('after connection opened ');
 
   // Listen for all pg_notify channel messages
   client.on('notification', function(msg) {
@@ -45,8 +45,10 @@ console.log('New order received: ');
     dbEventEmitter.emit(msg.channel, payload);
   });
   
+  console.log('received msg: '+ payload);
+
   // Designate which channels we are listening on. Add additional channels with multiple lines.
-  client.query('LISTEN new_order');
+  client.query('LISTEN new_enseigne');
 
 
       //const result = await client.query('SELECT * FROM test_table');
