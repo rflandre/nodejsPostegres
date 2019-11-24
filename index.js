@@ -42,7 +42,7 @@ console.log('after connection opened in index '+ client);
 
   // Designate which channels we are listening on. Add additional channels with multiple lines.
   client.query('LISTEN new_enseigne');
-
+});
 
 
 express()
