@@ -37,7 +37,7 @@ dbEventEmitter.on('new_enseigne', (msg) => {
       
       const client = await pool.connect()
 
-      console.log('after connection opened ');
+      console.log('after connection opened '+ client);
 
   // Listen for all pg_notify channel messages
   client.on('notification', function(msg) {
