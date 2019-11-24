@@ -51,10 +51,10 @@ dbEventEmitter.on('new_enseigne', (msg) => {
   client.query('LISTEN new_enseigne');
 
 
-      //const result = await client.query('SELECT * FROM test_table');
-      //const results = { 'results': (result) ? result.rows : null};
-      //res.render('pages/db', results );
-      res.render('pages/db', payload );
+      const result = await client.query('SELECT * FROM mysalesforcerf.enseigne__c');
+      const results = { 'results': (result) ? result.rows : null};
+      res.render('pages/db', results );
+      //res.render('pages/db', payload );
       client.release();
     } catch (err) {
       console.error(err);
