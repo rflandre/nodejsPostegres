@@ -9,6 +9,9 @@ const pool = new Pool({
   ssl: true
 });
 
+var EventEmitter = require('events');
+var util = require('util');
+
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
