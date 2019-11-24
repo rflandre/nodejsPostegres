@@ -51,7 +51,8 @@ dbEventEmitter.on('new_order', (msg) => {
 
       //const result = await client.query('SELECT * FROM test_table');
       //const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
+      //res.render('pages/db', results );
+      res.render('pages/db', payload );
       client.release();
     } catch (err) {
       console.error(err);
