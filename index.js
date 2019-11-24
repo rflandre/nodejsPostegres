@@ -45,7 +45,7 @@ dbEventEmitter.on('new_enseigne', (msg) => {
     dbEventEmitter.emit(msg.channel, payload);
   });
   
-  console.log('received msg: '+ payload);
+  //console.log('received msg: '+ payload);
 
   // Designate which channels we are listening on. Add additional channels with multiple lines.
   client.query('LISTEN new_enseigne');
