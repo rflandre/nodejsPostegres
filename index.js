@@ -35,7 +35,7 @@ dbEventEmitter.on('new_order', (msg) => {
   console.log('New order received: ' + msg.orderId);
 });
       
-console.log('New order received: ' + msg.orderId);
+console.log('New order received: ');
       const client = await pool.connect()
 
 
