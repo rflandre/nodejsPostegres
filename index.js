@@ -24,7 +24,7 @@ var util = require('util');
 // Define the event handlers for each channel name
 dbEventEmitter.on('new_enseigne', (msg) => {
   // Custom logic for reacting to the event e.g. firing a webhook, writing a log entry etc
-  console.log('New enseigne received: ' + msg);
+  console.log('New enseigne received: ' + msg.JSON);
 });
 
 pool.connect((err, client) => {
